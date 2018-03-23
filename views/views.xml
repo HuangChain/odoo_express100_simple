@@ -1,0 +1,86 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="kuaidi100.list">
+      <field name="name">kuaidi100 list</field>
+      <field name="model">kuaidi100.kuaidi100</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="express_order"></field>
+          <field name="express_company"></field>
+          <field name="express_order"></field>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="view_form_res_car">
+      <field name="name">res.car.form</field>
+      <field name="model">kuaidi100.kuaidi100</field>
+      <field name="arch" type="xml">
+        <form string="窗体名称">
+          <header>
+            <button string="查询" name="getHtml" type="object" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="express_company"></field>
+                <field name="express_message"></field>
+              </group>
+                <group>
+                  <field name="express_order"></field>
+                </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="kuaidi100.action_window">
+      <field name="name">快递100</field>
+      <field name="res_model">kuaidi100.kuaidi100</field>
+      <field name="view_mode">tree,form</field>
+       <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          创建快递单
+        </p>
+      </field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="kuaidi100.action_server">
+      <field name="name">kuaidi100 server</field>
+      <field name="model_id" ref="model_kuaidi100_kuaidi100"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+
+    <menuitem name="kuaidi100" id="kuaidi100.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="快递" id="kuaidi100.menu_1" parent="kuaidi100.menu_root" action="kuaidi100.action_window"/>
+     <menuitem name="快递1" id="kuaidi100.menu_12" parent="kuaidi100.menu_1" action="kuaidi100.action_window"/>
+    <!--<menuitem name="Menu 2" id="kuaidi100.menu_2" parent="kuaidi100.menu_root"/>-->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="kuaidi100.menu_1_list" parent="kuaidi100.menu_1"
+              action="kuaidi100.action_window"/>
+    <menuitem name="Server to list" id="kuaidi100" parent="kuaidi100.menu_2"
+              action="kuaidi100.action_server"/>
+    -->
+  </data>
+</odoo>
